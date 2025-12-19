@@ -15,9 +15,13 @@ export const Cart = () => {
 	return (
 		<div className="w-[95%] flex flex-col mx-auto my-10 space-y-10">
 			{/* Detalle del shopping cart */}
-			<span className="text-xl text-center font-extrabold underline underline-offset-4">
-				Detalle de la venta:
-			</span>
+			
+			<div className={`w-full flex flex-col justify-center p-4 space-y-1.5`}>
+				<h1 className="text-2xl md:text-4xl text-shadow-lg/80 text-shadow-neutral-500 text-center font-extrabold">
+					Detalle de la venta:
+				</h1>
+				<span className="w-[15%] h-1.5 mx-auto rounded-b-2xl bg-blue-600 border"></span>
+			</div>
 
 			{/* Cuadro de los detalles del carrito */}
 			<div className="relative overflow-x-auto bg-neutral-primary-soft shadow-xs">
@@ -46,10 +50,10 @@ export const Cart = () => {
 					</thead>
 					<tbody>
 						{shoppingCart.map((item) => (
-							<tr key={Math.random()} className="hover:bg-green-700/50">
+							<tr key={Math.random()} className="hover:bg-green-700/50 bg-gray-500/80 font-semibold">
 								<td className="border p-1.5">
 									<img
-										className="max-w-xs mx-auto rounded-md"
+										className="w-30 h-24 md:h-30 mx-auto rounded-md"
 										src={item.pathImagen}
 										alt="Aqui va la imagen"
 									/>
@@ -66,12 +70,14 @@ export const Cart = () => {
 								<td className="px-2 py-2.5 border text-right">
 									<span>$ {item.total}</span>
 								</td>
-								<td className="px-2 border">
+								<td className="px-2 py-2.5 border">
 									<div className="flex justify-center items-center gap-3 flex-wrap text-xs md:text-sm">
 										<button
 											type="button"
 											onClick={() =>
-												navigate(`/productDetail/${item.productoId}`)
+												navigate(
+													`/productDetail/${item.productoId}/${item.talla}`,
+												)
 											}
 											className="px-2.5 py-2 bg-blue-600 hover:bg-blue-700 hover:text-white rounded-md flex flex-row items-center"
 										>
@@ -110,44 +116,6 @@ export const Cart = () => {
 							</tr>
 						))}
 					</tbody>
-					{/* <tfoot className="border-none">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<th scope="col" className="px-2 py-2.5 border">
-								Subtotal
-							</th>
-							<td className="px-2 py-2.5 border text-right">$ {subtotal}</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<th scope="col" className="px-2 py-2.5 border">
-								Descuento
-							</th>
-							<td className="px-2 py-2.5 border text-right">$ {descuento}</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<th scope="col" className="px-2 py-2.5 border">
-								Iva 15%
-							</th>
-							<td className="px-2 py-2.5 border text-right">$ {totalIva}</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<th scope="col" className="px-2 py-2.5 border">
-								Total a Pagar
-							</th>
-							<td className="px-2 py-2.5 border text-right">$ {total}</td>
-						</tr>
-					</tfoot> */}
 				</table>
 			</div>
 
@@ -158,7 +126,7 @@ export const Cart = () => {
 						to={"/order"}
 						className="bg-green-600 hover:bg-green-700 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2"
 					>
-						Ir a Pagar: ${total}
+						Ir a Pagar: ${total.toFixed(2)}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"

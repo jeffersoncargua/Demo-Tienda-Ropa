@@ -14,4 +14,18 @@ async function GenerarVenta(ventaDto) {
 	return response;
 }
 
-export { GenerarVenta };
+async function CreateTokenPay(requestToken) {
+	const route = "Venta/CreateTokenPay";
+	const verbose = "POST";
+	const object = requestToken;
+
+	const response = await useFetch({
+		verbose: verbose,
+		route: route,
+		object: object,
+	});
+
+	return response;
+}
+
+export { GenerarVenta, CreateTokenPay };

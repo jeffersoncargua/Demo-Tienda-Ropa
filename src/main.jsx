@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { Header, Footer } from "./components";
+import { Header, Footer, TopScroll } from "./components";
 import { BrowserRouter as Router } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
@@ -21,6 +21,7 @@ createRoot(document.getElementById("root")).render(
 		<Provider store={store}>
 			<Router>
 				<Header />
+				<TopScroll />
 				<App />
 				<Footer />
 			</Router>

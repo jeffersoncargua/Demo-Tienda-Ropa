@@ -5,6 +5,11 @@ const message = {
 		telefono: "El telefono es requerido",
 		email: "El email es requerido",
 		direccion: "La direccion es requerida",
+		paymentMethod: "El metodo de pago es requerido",
+		number: "El numero de la tarejeta débito/crédito es requerido",
+		cvv: "El CVV es requerido",
+		diferido: "Debe seleccionar si desea o no diferir el pago",
+		plazos: "Debe escoger a cuantos meses desea diferir",
 	},
 
 	error: {

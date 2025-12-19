@@ -9,15 +9,15 @@ export const Header = () => {
 	const shoppingCart = useSelector((state) => state.cartState.shoppingCart);
 
 	return (
-		<header className="w-full flex flex-col">
+		<header className="w-full flex flex-col bg-black rounded-b-md">
 			<div className="flex justify-center m-3">
 				<img
-					className="rounded-lg max-w-2xs md:max-w-xs"
+					className="rounded-lg max-w-2xs md:max-w-xs shadow-sm shadow-white"
 					src={LogoChompa}
 					alt="Aqui va el logo de la chompa"
 				/>
 			</div>
-			<nav className="w-full relative">
+			<nav className="w-full relative max-md:bg-amber-50 ">
 				{/* Cuando la pantalla se haga pequeña aparece el boton de hambuerguesa */}
 				<button
 					type="button"
@@ -38,9 +38,9 @@ export const Header = () => {
 				</button>
 				{/* Cuando la pantalla se vuelva pequeña esto desaparece y vuelve a aparecer cuando se presione el boton de hamburguesa */}
 				<ul
-					className={`bg-amber-300 md:bg-amber-500 rounded-md w-full md:space-x-4 p-2 ${!showMenu ? "max-md:-translate-x-full overflow-x-hidden" : "max-md:translate-x-0 "} z-50 max-md:absolute transition delay-200 duration-300 max-md:min-h-screen md:min-h-full flex flex-col justify-start space-y-2 md:space-y-0 md:flex md:flex-row md:items-center md:justify-between`}
+					className={`bg-amber-300 md:bg-amber-500 rounded-md w-full md:space-x-4 p-2 ${!showMenu ? "max-md:-translate-x-full overflow-x-hidden" : "max-md:translate-x-0"} z-50 max-md:absolute transition-transform delay-200 duration-300 max-md:min-h-screen md:min-h-full flex flex-col justify-start space-y-2 md:space-y-0 md:flex md:flex-row md:items-center md:justify-between`}
 				>
-					<li className="flex justify-center bg-amber-200/25 max-md:hover:bg-amber-200 md:bg-transparent p-2 md:p-0 border rounded-lg md:border-0 md:m-0">
+					<li className="flex justify-center bg-amber-200/25 max-md:hover:bg-amber-200 md:bg-transparent p-2 md:p-0 border rounded-lg md:border-0 md:m-0 md:hover:text-white md:hover:font-semibold">
 						<Link
 							to={"/"}
 							onClick={() => setShowMenu(!showMenu)}
@@ -49,11 +49,11 @@ export const Header = () => {
 							Inicio
 						</Link>
 					</li>
-					<li className="flex md:space-x-8 justify-center items-center bg-amber-200/25 max-md:hover:bg-amber-200 md:bg-transparent p-2 md:p-0 border rounded-lg md:border-0 md:m-0">
+					<li className="flex md:space-x-8 justify-center items-center bg-amber-200/25 max-md:hover:bg-amber-200 md:bg-transparent p-2 md:p-0 border rounded-lg md:border-0 md:m-0 ">
 						<Link
 							to="register"
 							onClick={() => setShowMenu(!showMenu)}
-							className="hover:cursor-pointer"
+							className="hover:cursor-pointer md:hover:text-white md:hover:font-semibold"
 						>
 							Registrarse
 						</Link>

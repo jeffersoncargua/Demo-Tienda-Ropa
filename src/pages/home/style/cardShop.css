@@ -1,0 +1,17 @@
+.cardShopBar::before {
+	content: "";
+	position: absolute;
+	height: 550px;
+	width: 30px;
+	background: rgb(46, 33, 226);
+	left: 0px;
+	top: -100px;
+	transform: rotate(25deg);
+	transition: all 0.9s;
+	opacity: 0.3;
+}
+
+.cardShopBar:hover::before {
+	left: 95%;
+    background: rgb(3, 250, 3);
+}

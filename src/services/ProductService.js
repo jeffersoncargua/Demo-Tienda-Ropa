@@ -1,8 +1,22 @@
 import { useFetch } from "../hooks/useFetch";
 
-async function GetProductos() {
+async function GetProductos({ search = "", pageSize = 4, pageNumber = 1 }) {
 	const verbose = "GET";
 	const route = "Producto/GetProductos";
+	const query = `?query=${search}&pageSize=${pageSize}&pageNumber=${pageNumber}`;
+
+	const response = await useFetch({
+		query: query,
+		verbose: verbose,
+		route: route,
+	});
+
+	return response;
+}
+
+async function GetCantProducts() {
+	const verbose = "GET";
+	const route = "Producto/GetCantProductos";
 
 	const response = await useFetch({ verbose: verbose, route: route });
 
@@ -18,4 +32,4 @@ async function GetProducto(id) {
 	return response;
 }
 
-export { GetProductos, GetProducto };
+export { GetProductos, GetCantProducts, GetProducto };

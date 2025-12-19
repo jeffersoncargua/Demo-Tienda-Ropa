@@ -12,15 +12,20 @@ const cartSlice = createSlice({
 	reducers: {
 		addToCart(state, action) {
 			const cartItem = state.shoppingCart.find(
-				(item) => item.productoId === action.payload.productoId,
+				(item) =>
+					item.productoId === action.payload.productoId &&
+					item.talla === action.payload.talla,
 			);
+
+			console.log(action.payload);
 
 			let subtotal, totalIva, descuento, total, updatedShoppingCart;
 
 			if (cartItem) {
 				updatedShoppingCart = state.shoppingCart;
 				updatedShoppingCart = updatedShoppingCart.map((item) =>
-					item.productoId === action.payload.productoId
+					item.productoId === action.payload.productoId &&
+					item.talla === action.payload.talla
 						? {
 								...item,
 								cantidad: action.payload.cantidad,
@@ -30,8 +35,7 @@ const cartSlice = createSlice({
 							}
 						: item,
 				);
-				subtotal =
-					state.subTotal15 - cartItem.total; // Es el nuevo valor subtotal que se quita con el registro anterior del item ya registrado
+				subtotal = state.subTotal15 - cartItem.total; // Es el nuevo valor subtotal que se quita con el registro anterior del item ya registrado
 				subtotal = subtotal + action.payload.total; // Es el nuevo valor del subtotal con la cantidad agregado al carrito de compras con el item ya registrado
 				totalIva = subtotal * 0.15;
 				descuento = state.descuento - cartItem.descuento;
@@ -41,9 +45,7 @@ const cartSlice = createSlice({
 				// return {...state, total:total, subTotal15:subtotal, totalIva:totalIva, descuento:descuento, shoppingCart:updateShoppingCart}
 			} else {
 				updatedShoppingCart = state.shoppingCart.concat(action.payload);
-				subtotal =
-					state.subTotal15 +
-					action.payload.total; // Es el valor del subtotal con el registro ingresado
+				subtotal = state.subTotal15 + action.payload.total; // Es el valor del subtotal con el registro ingresado
 				totalIva = subtotal * 0.15;
 				descuento = state.descuento + action.payload.descuento;
 				total = subtotal + totalIva;
@@ -66,7 +68,7 @@ const cartSlice = createSlice({
 		},
 		removeToCart(state, action) {
 			const shoppingFilter = state.shoppingCart.filter(
-				(item) => item.productoId !== action.payload.productoId,
+				(item) => item.descripcion !== action.payload.descripcion,
 			);
 			const subtotal =
 				state.subTotal15 -

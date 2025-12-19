@@ -14,7 +14,7 @@ async function RegistrarUsuario(clienteDto) {
 	return response;
 }
 
-async function BurcarUsuario(identificacion) {
+async function BuscarUsuario(identificacion) {
 	const verbose = "GET";
 	const route = "Costumer/GetCostumer/0";
 	const query = `?query=${identificacion}`;
@@ -28,4 +28,4 @@ async function BurcarUsuario(identificacion) {
 	return response;
 }
 
-export { RegistrarUsuario, BurcarUsuario };
+export { RegistrarUsuario, BuscarUsuario };

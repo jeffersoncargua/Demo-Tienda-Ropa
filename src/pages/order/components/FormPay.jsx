@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { BurcarUsuario } from "../../../services/UserService";
+import { BuscarUsuario } from "../../../services/UserService";
 import { Loading } from "../../../components";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
@@ -25,10 +25,7 @@ export const FormPay = ({ setShowFormPay }) => {
 	const subtotal15 = useSelector((state) => state.cartState.subTotal15);
 	const totalIva = useSelector((state) => state.cartState.totalIva);
 
-	const {
-		register,
-		handleSubmit,
-	} = useForm({
+	const { register, handleSubmit } = useForm({
 		defaultValues: {
 			rucEmpresa: import.meta.env.VITE_EMPRESA_RUC,
 			shoppingCart: JSON.stringify(shoppingCart),
@@ -56,7 +53,7 @@ export const FormPay = ({ setShowFormPay }) => {
 	const HandleCostumer = async () => {
 		setMessage("");
 		setLoading(true);
-		const response = await BurcarUsuario(indetificacionRef.current.value);
+		const response = await BuscarUsuario(indetificacionRef.current.value);
 		if (response.isSuccess) {
 			setCostumer(response.result);
 			setIdetificacion(response.result.identificacion);
@@ -86,7 +83,10 @@ export const FormPay = ({ setShowFormPay }) => {
 	};
 
 	return (
-		<div tabIndex={-1} className="overflow-y-auto bg-gray-900/70 w-full fixed top-0 left-0 right-0 max-md:inset-0 min-h-full flex items-center ">
+		<div
+			tabIndex={-1}
+			className="overflow-y-auto bg-gray-900/70 w-full fixed top-0 left-0 right-0 max-md:inset-0 min-h-full flex items-center "
+		>
 			<div className="relative flex items-center w-full min-h-full md:min-h-screen">
 				<div className="w-[95%] md:w-[70%] mx-auto min-h-full bg-gray-300 p-2 md:p-4 rounded-lg">
 					<button
@@ -307,9 +307,8 @@ export const FormPay = ({ setShowFormPay }) => {
 					)}
 				</div>
 
-			{loading && <Loading />}
+				{loading && <Loading />}
 			</div>
-			
 		</div>
 	);
 };

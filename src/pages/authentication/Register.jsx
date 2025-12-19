@@ -75,11 +75,11 @@ export const Register = () => {
 
 			<form
 				onSubmit={handleSubmit(HandleFormSumbit)}
-				className="w-[90%] md:w-[80%] mx-auto flex- flex-col justify-center space-y-5 my-20 p-4 border-2 border-ambar-500 rounded-lg shadow-xs/30 shadow-green-600"
+				className="w-[90%] md:w-[80%] mx-auto text-xs md:text-sm flex flex-col justify-center space-y-5 my-10 p-4 border-2 border-ambar-500 rounded-lg shadow-xs/30 shadow-green-600"
 			>
-				<div className="w-full grid grid-col-1 md:grid-cols-2 gap-14 mt-10 ">
+				<div className="w-full grid grid-col-1 md:grid-cols-2 gap-y-4 md:gap-14 ">
 					{/*Nombre completo */}
-					<div className="flex flex-col space-y-4 relative">
+					<div className="flex flex-col space-y-2 relative">
 						<label
 							className="bg-amber-300 w-full relative p-2 underline underline-offset-4 rounded-lg border"
 							htmlFor="nombreCompleto"
@@ -104,7 +104,7 @@ export const Register = () => {
 						)}
 					</div>
 					{/*Identificacion */}
-					<div className="flex flex-col space-y-4 relative">
+					<div className="flex flex-col space-y-2 relative">
 						<label
 							className="bg-amber-300 w-full relative p-2 underline underline-offset-4 rounded-lg border"
 							htmlFor="identificacion"
@@ -129,7 +129,7 @@ export const Register = () => {
 						)}
 					</div>
 					{/*Direccion */}
-					<div className="flex flex-col space-y-4 relative">
+					<div className="flex flex-col space-y-2 relative">
 						<label
 							className="bg-amber-300 w-full relative p-2 underline underline-offset-4 rounded-lg border"
 							htmlFor="direccion"
@@ -154,7 +154,7 @@ export const Register = () => {
 						)}
 					</div>
 					{/*Correo */}
-					<div className="flex flex-col space-y-4 relative">
+					<div className="flex flex-col space-y-2 relative">
 						<label
 							className="bg-amber-300 w-full relative p-2 underline underline-offset-4 rounded-lg border"
 							htmlFor="email"
@@ -179,7 +179,7 @@ export const Register = () => {
 						)}
 					</div>
 					{/*Telefono */}
-					<div className="flex flex-col space-y-4 relative">
+					<div className="flex flex-col space-y-2 relative">
 						<label
 							className="bg-amber-300 w-full relative p-2 underline underline-offset-4 rounded-lg border"
 							htmlFor="telefono"
@@ -207,7 +207,7 @@ export const Register = () => {
 
 				<button
 					type="submit"
-					className={`w-full mt-18 mb-10 px-2 py-2 flex items-center justify-center bg-green-600 hover:bg-green-700 hover:text-white rounded-lg ${!loading ? "hover:cursor-pointer" : "hover:cursor-not-allowed"}`}
+					className={`w-full px-2 py-2 flex items-center justify-center bg-green-600 hover:bg-green-700 hover:text-white rounded-lg ${!loading ? "hover:cursor-pointer" : "hover:cursor-not-allowed"}`}
 					disabled={loading}
 				>
 					Enviar Registro
