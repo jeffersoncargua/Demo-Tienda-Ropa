@@ -20,7 +20,7 @@ export const Cart = () => {
 				<h1 className="text-2xl md:text-4xl text-shadow-lg/80 text-shadow-neutral-500 text-center font-extrabold">
 					Detalle de la venta:
 				</h1>
-				<span className="w-[15%] h-1.5 mx-auto rounded-b-2xl bg-blue-600 border"></span>
+				<span className="w-[30%] md:w-[15%] h-1.5 mx-auto rounded-b-2xl bg-blue-600 border"></span>
 			</div>
 
 			{/* Cuadro de los detalles del carrito */}
@@ -121,7 +121,7 @@ export const Cart = () => {
 
 			{/* Seccion para ir a pagar */}
 			{shoppingCart.length > 0 && (
-				<div className="flex flex-col md:flex-row items-center space-y-5 md:space-y-0 justify-center md:justify-end md:space-x-4">
+				<div className="flex flex-row items-center justify-center md:justify-end space-x-4 text-xs md:text-sm">
 					<Link
 						to={"/order"}
 						className="bg-green-600 hover:bg-green-700 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2"

@@ -19,6 +19,7 @@ export const FormPayment = ({
 	setDeferred,
 	token,
 	setFormPay,
+	HandleCancel,
 }) => {
 	const {
 		register,
@@ -344,22 +345,42 @@ export const FormPayment = ({
 				</div>
 			</div>
 
-			<button
-				type="submit"
-				//onClick={() => HandleBuy()}
-				disabled={token !== ""}
-				className={`${token === "" ? "cursor-pointer" : "cursor-not-allowed"} mx-auto px-4 py-2 my-4 rounded-lg bg-green-700 hover:bg-green-600 flex flex-row justify-center items-center hover:text-white mb-2 md:mb-5`}
-			>
-				Generar Pago
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="currentColor"
-					className="w-4 h-4 bi bi-credit-card-fill ms-2"
-					viewBox="0 0 16 16"
+			<div className="w-full flex flex-row items-center justify-center space-x-4 mb-2 md:mb-5 my-4">
+				<button
+					type="submit"
+					//onClick={() => HandleBuy()}
+					disabled={token !== ""}
+					className={`${token === "" ? "cursor-pointer" : "cursor-not-allowed"} px-4 py-2 rounded-lg bg-green-700 hover:bg-green-600 flex flex-row justify-center items-center hover:text-white`}
 				>
-					<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1" />
-				</svg>
-			</button>
+					Generar Pago
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="currentColor"
+						className="w-4 h-4 bi bi-credit-card-fill ms-2"
+						viewBox="0 0 16 16"
+					>
+						<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1" />
+					</svg>
+				</button>
+
+				<button
+						type="button"
+						onClick={() => HandleCancel()}
+						className={`${token === "" ? 'flex':'hidden'} px-4 py-2 bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center`}
+					>
+						Cancelar Compra
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor"
+							className="bi bi-x-circle w-4 h-4 ms-2"
+							viewBox="0 0 16 16"
+						>
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+						</svg>
+					</button>
+			</div>
+			
 		</form>
 	);
 };

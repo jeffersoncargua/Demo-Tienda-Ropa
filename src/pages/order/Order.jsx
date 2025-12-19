@@ -15,6 +15,8 @@ import {
 import {
 	SweetAlertSuccess,
 	SweetAlertFail,
+	SweetAlertDelete,
+	SweetAlertSuccessDeleted,
 } from "../../components/SweetAlertResponse";
 //import { FormPay } from "./components";
 
@@ -56,9 +58,14 @@ export const Order = () => {
 		setShowFormPay(!showFormPay);
 	};
 
-	const HandleCancel = () => {
-		dispatch(clearToCart());
-		navigate("/");
+	const HandleCancel = async() => {
+		//dispatch(clearToCart());
+		const result = await SweetAlertDelete();
+		console.log(result);
+		if(result.isConfirmed){
+			dispatch(clearToCart());
+			SweetAlertSuccessDeleted();
+		}
 	};
 
 	const HandlePay = async () => {
@@ -150,12 +157,29 @@ export const Order = () => {
 								HandleCostumer={HandleCostumer}
 								message={message}
 								costumer={costumer}
-							/>
-
-							{/* Seccion para realizar el pago con tarjeta */}
-							{/* {costumer.identificacion && ( */}
+							/>							
 						</div>
 					</div>
+
+					{/*Boton para cancelar la venta */}
+					<button
+						type="button"
+						onClick={() => HandleCancel()}
+						className={`${costumer.identificacion ? 'hidden' : 'flex'} px-5 py-2 mx-auto bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center`}
+					>
+						Cancelar Compra
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor"
+							className="bi bi-x-circle w-5 h-5 ms-3"
+							viewBox="0 0 16 16"
+						>
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+						</svg>
+					</button>
+
+					{/* Seccion para realizar el pago con tarjeta */}
 					<div className="w-full md:w-[70%] mx-auto">
 						{costumer.identificacion && (
 							<FormPayment
@@ -167,6 +191,7 @@ export const Order = () => {
 								setDeferred={setDeferred}
 								token={token}
 								setFormPay={setFormPay}
+								HandleCancel={HandleCancel}
 							/>
 						)}
 					</div>
@@ -237,7 +262,6 @@ export const Order = () => {
 				</div>
 			</div>
 
-			{/* {showFormPay && <FormPay setShowFormPay={setShowFormPay} />} */}
 			{/* Este loading permite bloquear el acceso a los formularios mientras se realiza el proceso de pago */}
 			{loading && <Loading />}
 		</div>
