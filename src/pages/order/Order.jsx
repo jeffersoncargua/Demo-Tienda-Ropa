@@ -1,8 +1,7 @@
-// Esta pagina permite realizar los procesos para el pago de la orden de compra y proceder con 
+// Esta pagina permite realizar los procesos para el pago de la orden de compra y proceder con
 // la facturacion correspondiente
 
-import { useSelector, useDispatch } from "react-redux";
-import { clearToCart } from "../../redux/cartSlice";
+import { useSelector } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { BuscarUsuario } from "../../services/UserService";
 import { GenerarVenta } from "../../services/SalesService";
@@ -17,8 +16,6 @@ import {
 import {
 	SweetAlertSuccess,
 	SweetAlertFail,
-	SweetAlertDelete,
-	SweetAlertSuccessDeleted,
 } from "../../components/SweetAlertResponse";
 import { useForm } from "react-hook-form";
 
@@ -40,9 +37,9 @@ export const Order = () => {
 	const identificacionRef = useRef("");
 	const navigate = useNavigate();
 
-	const {handleSubmit, formState:{errors}} = useForm();
-
-	const dispatch = useDispatch();
+	const {
+		handleSubmit,
+	} = useForm();
 
 	const totalProductos = shoppingCart.reduce((suma, item) => {
 		return suma + item.cantidad;
@@ -87,7 +84,7 @@ export const Order = () => {
 			navigate(`/success?identificacion=${identificacion}`);
 		} else {
 			SweetAlertFail(response.message);
-			navigate('/fail');
+			navigate("/fail");
 		}
 		setLoading(false);
 		setShowFormPay(false);
@@ -160,7 +157,10 @@ export const Order = () => {
 					</div>
 
 					{/*Boton para cancelar la venta */}
-					<ButtonCancel identificacion={costumer.identificacion} tipo="identificacion" />
+					<ButtonCancel
+						identificacion={costumer.identificacion}
+						tipo="identificacion"
+					/>
 					{/* <button
 						type="button"
 						onClick={() => HandleCancel()}

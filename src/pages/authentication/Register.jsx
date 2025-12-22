@@ -34,9 +34,7 @@ export const Register = () => {
 
 	return (
 		<div className="w-[95%] mx-auto flex flex-col my-10 items-center">
-			<div
-				className={`w-full flex flex-col justify-center p-4 space-y-1.5`}
-			>
+			<div className={`w-full flex flex-col justify-center p-4 space-y-1.5`}>
 				<h1 className="text-2xl md:text-4xl font-extrabold text-center text-shadow-lg/80 text-shadow-neutral-500">
 					Registro de Usuario
 				</h1>

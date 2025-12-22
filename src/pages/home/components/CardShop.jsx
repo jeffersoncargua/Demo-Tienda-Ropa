@@ -1,11 +1,10 @@
-// Este componente permite generar una tarjeta que muestra algunos detalles del articulo y 
+// Este componente permite generar una tarjeta que muestra algunos detalles del articulo y
 // un boton para dirigir a la pagina de detalles del producto
 
 import { useNavigate } from "react-router";
 import "../style/cardShop.css";
 
 export const CardShop = ({ item }) => {
-
 	const navigate = useNavigate();
 
 	return (

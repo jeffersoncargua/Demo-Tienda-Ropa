@@ -1,4 +1,4 @@
-// Este componente es el footer del sitio 
+// Este componente es el footer del sitio
 
 export const Footer = () => {
 	return (

@@ -1,4 +1,4 @@
-// Este es la pagina que muestra el detalle del producto seleccionado en 
+// Este es la pagina que muestra el detalle del producto seleccionado en
 // la pagina principal o en la pagina del carrito de compras
 
 import { useNavigate, useParams } from "react-router";

@@ -1,4 +1,4 @@
-// Este componente permite enviar la identificacion del usuario al back-end para buscar su informacion 
+// Este componente permite enviar la identificacion del usuario al back-end para buscar su informacion
 // para continuar con el proceso de compra y facturacion
 
 export const FormCostumerInfomation = ({

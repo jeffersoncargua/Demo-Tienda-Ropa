@@ -1,4 +1,4 @@
-// Este componente es el header del sitio web que contiene la barra de navegacion 
+// Este componente es el header del sitio web que contiene la barra de navegacion
 
 import { useState } from "react";
 import LogoChompa from "../assets/LogoChompra.png";

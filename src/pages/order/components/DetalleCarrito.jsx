@@ -1,4 +1,4 @@
-// Este componente permite mostrar el detalle de la venta que incluye el subtotal, el iva, el descuento 
+// Este componente permite mostrar el detalle de la venta que incluye el subtotal, el iva, el descuento
 // y total a pagar por los articulos
 
 import { useSelector } from "react-redux";

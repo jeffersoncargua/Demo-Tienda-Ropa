@@ -1,4 +1,4 @@
-// Este formulario permite recibir la informacion de la tarjeta de credito/ debito, 
+// Este formulario permite recibir la informacion de la tarjeta de credito/ debito,
 // asi como el diferido y la forma de pago para continuar con el proceso de facturacion
 
 import { useState } from "react";
@@ -23,7 +23,6 @@ export const FormPayment = ({
 	setDeferred,
 	token,
 	setFormPay,
-	HandleCancel,
 }) => {
 	const {
 		register,

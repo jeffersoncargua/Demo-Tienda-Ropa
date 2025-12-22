@@ -1,5 +1,5 @@
-// Esta configuracion de redux es para el carrito de compras, que permite agregar, actualizar, eliminar 
-// y limpiar el carrito de compras. 
+// Esta configuracion de redux es para el carrito de compras, que permite agregar, actualizar, eliminar
+// y limpiar el carrito de compras.
 // Tambien permite manejar los valores: subtotal15, totalIva, total y descuento.
 
 import { createSlice } from "@reduxjs/toolkit";
