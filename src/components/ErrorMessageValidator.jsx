@@ -1,3 +1,5 @@
+// Este componente sirve para mostrar mensajes de error en los formularios
+
 export const ErrorMessageValidator = ({ message, bg = null }) => {
 	return (
 		<span

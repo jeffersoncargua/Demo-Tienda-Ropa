@@ -1,28 +1,27 @@
-//import ProductoImagen from "../../../assets/LogoChompra.png";
+// Este componente permite generar una tarjeta que muestra algunos detalles del articulo y 
+// un boton para dirigir a la pagina de detalles del producto
+
 import { useNavigate } from "react-router";
-//import { addToCart } from "../../../redux/cartSlice";
-import "../style/cardShop.css"
+import "../style/cardShop.css";
 
 export const CardShop = ({ item }) => {
-	//const dispatch = useDispatch();
-	const navigate = useNavigate();
 
-	// const AddToCart = (item) => {
-	// 	dispatch(addToCart(item));
-	// };
+	const navigate = useNavigate();
 
 	return (
 		<div className="relative overflow-hidden cardShopBar z-20 w-[80%] mx-auto md:max-w-sm hover:transition hover:ease-in-out hover:delay-100 hover:duration-150 hover:scale-105 rounded-lg p-2 border bg-amber-50 hover:bg-blue-300 hover:border-2 hover:shadow-md hover:shadow-gray-500 border-black">
 			<div className="z-40 mx-auto w-[80%] md:w-[70%]">
 				<img
-				src={item.pathImagen}
-				alt="Aqui va una imagen del producto"
-				className="mx-auto z-40 h-48 md:h-52 rounded-md"
+					src={item.pathImagen}
+					alt="Aqui va una imagen del producto"
+					className="mx-auto z-40 h-48 md:h-52 rounded-md"
 				/>
 			</div>
-			
+
 			<div className="p-2 flex flex-col justify-center space-y-2 text-xs md:text-sm text-center">
-				<span className="text-sm md:text-md font-semibold">{item.descripcion}</span>
+				<span className="text-sm md:text-md font-semibold">
+					{item.descripcion}
+				</span>
 				<span className="text-sm md:text-md font-semibold">Tallas</span>
 				<div className="italic flex flex-row items-center justify-center">
 					<span className="h-2 w-2 rounded-full bg-amber-700 mx-2"></span> XL
@@ -32,7 +31,6 @@ export const CardShop = ({ item }) => {
 				</div>
 				<button
 					type="button"
-					// onClick={() => AddToCart(item)}
 					onClick={() => navigate(`productDetail/${item.id}/${null}`)}
 					className="z-30 flex justify-center px-1.5 py-2 bg-blue-700 hover:transition hover:delay-100 hover:duration-200 hover:ease-in-out hover:bg-linear-65 from-blue-500 to-amber-700 group hover:text-white rounded-lg hover:cursor-pointer"
 				>

@@ -1,3 +1,5 @@
+// Este hook se encarga de realizar las peticiones a las API del Back-End
+
 export async function useFetch({
 	verbose,
 	route,

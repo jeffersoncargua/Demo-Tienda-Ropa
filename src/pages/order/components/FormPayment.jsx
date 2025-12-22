@@ -1,3 +1,6 @@
+// Este formulario permite recibir la informacion de la tarjeta de credito/ debito, 
+// asi como el diferido y la forma de pago para continuar con el proceso de facturacion
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
@@ -9,6 +12,7 @@ import LogoMastercard from "../../../assets/mastercard.png";
 import LogoVisa from "../../../assets/visa.png";
 import { message } from "../../../utils/validation/Validation";
 import { SweetAlertFail } from "../../../components/SweetAlertResponse";
+import { ButtonCancel } from "./ButtonCancel";
 
 export const FormPayment = ({
 	name,
@@ -350,7 +354,7 @@ export const FormPayment = ({
 					type="submit"
 					//onClick={() => HandleBuy()}
 					disabled={token !== ""}
-					className={`${token === "" ? "cursor-pointer" : "cursor-not-allowed"} px-4 py-2 rounded-lg bg-green-700 hover:bg-green-600 flex flex-row justify-center items-center hover:text-white`}
+					className={`${token === "" ? "cursor-pointer" : "cursor-not-allowed"} px-4 py-2 rounded-lg bg-green-700 hover:bg-green-600 flex flex-row justify-center items-center hover:text-white hover:border-2 hover:border-black font-semibold`}
 				>
 					Generar Pago
 					<svg
@@ -363,24 +367,24 @@ export const FormPayment = ({
 					</svg>
 				</button>
 
-				<button
-						type="button"
-						onClick={() => HandleCancel()}
-						className={`${token === "" ? 'flex':'hidden'} px-4 py-2 bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center`}
+				<ButtonCancel token={token} tipo="token" />
+				{/* <button
+					type="button"
+					onClick={() => HandleCancel()}
+					className={`${token === "" ? "flex" : "hidden"} px-4 py-2 bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center`}
+				>
+					Cancelar Compra
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="currentColor"
+						className="bi bi-x-circle w-4 h-4 ms-2"
+						viewBox="0 0 16 16"
 					>
-						Cancelar Compra
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="currentColor"
-							className="bi bi-x-circle w-4 h-4 ms-2"
-							viewBox="0 0 16 16"
-						>
-							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-						</svg>
-					</button>
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+					</svg>
+				</button> */}
 			</div>
-			
 		</form>
 	);
 };

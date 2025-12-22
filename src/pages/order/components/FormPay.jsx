@@ -9,11 +9,9 @@ import {
 	SweetAlertFail,
 	SweetAlertSuccess,
 } from "../../../components/SweetAlertResponse";
-import { patterns } from "../../../utils/validation/Validation";
 
 export const FormPay = ({ setShowFormPay }) => {
 	const [costumer, setCostumer] = useState({});
-	// const [message, setMessage] = useState("");
 	const [message, setMessage] = useState("Esto es una prueba");
 	const [loading, setLoading] = useState(false);
 	const [idetificacion, setIdetificacion] = useState("");

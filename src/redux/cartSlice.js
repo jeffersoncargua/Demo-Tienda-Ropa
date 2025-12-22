@@ -1,3 +1,7 @@
+// Esta configuracion de redux es para el carrito de compras, que permite agregar, actualizar, eliminar 
+// y limpiar el carrito de compras. 
+// Tambien permite manejar los valores: subtotal15, totalIva, total y descuento.
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
@@ -16,8 +20,6 @@ const cartSlice = createSlice({
 					item.productoId === action.payload.productoId &&
 					item.talla === action.payload.talla,
 			);
-
-			console.log(action.payload);
 
 			let subtotal, totalIva, descuento, total, updatedShoppingCart;
 
@@ -41,21 +43,13 @@ const cartSlice = createSlice({
 				descuento = state.descuento - cartItem.descuento;
 				descuento = descuento + action.payload.descuento;
 				total = subtotal + totalIva;
-
-				// return {...state, total:total, subTotal15:subtotal, totalIva:totalIva, descuento:descuento, shoppingCart:updateShoppingCart}
 			} else {
 				updatedShoppingCart = state.shoppingCart.concat(action.payload);
 				subtotal = state.subTotal15 + action.payload.total; // Es el valor del subtotal con el registro ingresado
 				totalIva = subtotal * 0.15;
 				descuento = state.descuento + action.payload.descuento;
 				total = subtotal + totalIva;
-
-				// return {...state, total:total, subTotal15:subtotal, totalIva:totalIva, descuento:descuento, shoppingCart:updateShoppingCart}
 			}
-
-			// console.log(
-			// 	`CartList: ${JSON.stringify(updatedShoppingCart)}, subtotal15: ${subtotal}, descuento: ${descuento}, totalIva: ${totalIva}, total: ${total}`,
-			// );
 
 			return {
 				...state,

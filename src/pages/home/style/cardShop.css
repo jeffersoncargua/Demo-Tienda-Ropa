@@ -13,5 +13,5 @@
 
 .cardShopBar:hover::before {
 	left: 95%;
-    background: rgb(3, 250, 3);
+	background: rgb(3, 250, 3);
 }

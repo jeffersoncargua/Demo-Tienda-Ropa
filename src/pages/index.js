@@ -5,3 +5,6 @@ export { Register } from "./authentication/Register";
 export { ProductDetail } from "./products/ProductDetail";
 export { Payment } from "./payment/Payment";
 export { EmptyCart } from "./cart/EmptyCart";
+export { PaymentSuccess } from "./payment/PaymentSuccess";
+export { PaymentFail } from "./payment/PaymentFail";
+export { PageNotFound } from "./PageNotFound";

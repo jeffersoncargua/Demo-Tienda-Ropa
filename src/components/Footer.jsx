@@ -1,3 +1,5 @@
+// Este componente es el footer del sitio 
+
 export const Footer = () => {
 	return (
 		<footer className="w-full flex flex-col md:flex-row justify-center bg-black shadow-lg shadow-gray-500 rounded-t-lg ">

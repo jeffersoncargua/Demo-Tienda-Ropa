@@ -1,6 +1,7 @@
+// Esta pagina muestra los articulos agregados por el usuario ql carrito de compras
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-// import ProductoImagen from "../../assets/LogoChompra.png";
 import { removeToCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 import { Link } from "react-router";
@@ -15,7 +16,6 @@ export const Cart = () => {
 	return (
 		<div className="w-[95%] flex flex-col mx-auto my-10 space-y-10">
 			{/* Detalle del shopping cart */}
-			
 			<div className={`w-full flex flex-col justify-center p-4 space-y-1.5`}>
 				<h1 className="text-2xl md:text-4xl text-shadow-lg/80 text-shadow-neutral-500 text-center font-extrabold">
 					Detalle de la venta:
@@ -50,7 +50,10 @@ export const Cart = () => {
 					</thead>
 					<tbody>
 						{shoppingCart.map((item) => (
-							<tr key={Math.random()} className="hover:bg-green-700/50 bg-gray-500/80 font-semibold">
+							<tr
+								key={Math.random()}
+								className="hover:bg-green-700/50 bg-gray-500/80 font-semibold"
+							>
 								<td className="border p-1.5">
 									<img
 										className="w-30 h-24 md:h-30 mx-auto rounded-md"
@@ -79,7 +82,7 @@ export const Cart = () => {
 													`/productDetail/${item.productoId}/${item.talla}`,
 												)
 											}
-											className="px-2.5 py-2 bg-blue-600 hover:bg-blue-700 hover:text-white rounded-md flex flex-row items-center"
+											className="px-2.5 py-2 bg-blue-600 hover:bg-blue-700 hover:text-white rounded-md flex flex-row items-center hover:border-2 hover:border-black font-semibold"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +101,7 @@ export const Cart = () => {
 												dispatch(removeToCart(item));
 												toast.info("Se elimino el item del carrito");
 											}}
-											className="px-2.5 py-2 bg-red-600 hover:bg-red-700 hover:text-white rounded-md flex flex-row items-center"
+											className="px-2.5 py-2 bg-red-600 hover:bg-red-700 hover:text-white rounded-md flex flex-row items-center hover:border-2 hover:border-black font-semibold"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +127,7 @@ export const Cart = () => {
 				<div className="flex flex-row items-center justify-center md:justify-end space-x-4 text-xs md:text-sm">
 					<Link
 						to={"/order"}
-						className="bg-green-600 hover:bg-green-700 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2"
+						className="bg-green-600 hover:bg-green-700 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2  hover:border-2 hover:border-black font-semibold"
 					>
 						Ir a Pagar: ${total.toFixed(2)}
 						<svg
@@ -144,7 +147,7 @@ export const Cart = () => {
 					</Link>
 					<Link
 						to={"/"}
-						className="bg-yellow-300 hover:bg-yellow-600 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2"
+						className="bg-yellow-300 hover:bg-yellow-600 hover:text-white rounded-lg flex flex-row justify-center items-center px-5 py-2  hover:border-2 hover:border-black font-semibold"
 					>
 						Seguir Comprando
 						<svg

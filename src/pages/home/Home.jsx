@@ -1,3 +1,5 @@
+// Esta es la pagina de inicio que muestra los articulos de venta para la facturacion electronica
+
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CardShop } from "./components";
 import { GetCantProducts, GetProductos } from "../../services/ProductService";
@@ -30,20 +32,20 @@ export const Home = () => {
 
 	useMemo(async () => {
 		const response = await GetCantProducts();
-			setPagina(0);
-			if (response.isSuccess) {
-				setCantProduct(response.result);
-				const numeroPaginas = parseInt(response.result / pagination.pageSize,10);
-				if (response.result % pagination.pageSize === 0) {
-					setPagina(numeroPaginas);
-				} else {
-					setPagina(numeroPaginas + 1);
-				}
+		setPagina(0);
+		if (response.isSuccess) {
+			setCantProduct(response.result);
+			const numeroPaginas = parseInt(response.result / pagination.pageSize, 10);
+			if (response.result % pagination.pageSize === 0) {
+				setPagina(numeroPaginas);
 			} else {
-				setCantProduct(0);
-				setPagina(0);
-				setLoading(false);
+				setPagina(numeroPaginas + 1);
 			}
+		} else {
+			setCantProduct(0);
+			setPagina(0);
+			setLoading(false);
+		}
 	}, [pagination]);
 
 	useMemo(() => {
@@ -52,7 +54,7 @@ export const Home = () => {
 		setPageLimit(new Array(2).fill(Math.random()));
 	}, [pagina]);
 
-	const HandleNextPagination = useCallback(async() => {
+	const HandleNextPagination = useCallback(async () => {
 		if (pageList.length > pagination.pageNumber) {
 			setPagination({ ...pagination, pageNumber: pagination.pageNumber + 1 });
 			setLoading(true);
@@ -63,10 +65,10 @@ export const Home = () => {
 			//alert("No hay mas paginas.");
 			toast.error("No hay mas paginas.");
 		}
-		window.scrollTo(0,0);
-	},[pagination, GetAllProducts, pageList]);
+		window.scrollTo(0, 0);
+	}, [pagination, GetAllProducts, pageList]);
 
-	const HandleBackPagination = useCallback(async() => {
+	const HandleBackPagination = useCallback(async () => {
 		if (pagination.pageNumber > 1) {
 			setPagination({ ...pagination, pageNumber: pagination.pageNumber - 1 });
 			setLoading(true);
@@ -77,22 +79,24 @@ export const Home = () => {
 			// alert("No hay mas paginas.");
 			toast.error("No hay mas paginas.");
 		}
-		window.scrollTo(0,0)
-	},[pagination, GetAllProducts]);
+		window.scrollTo(0, 0);
+	}, [pagination, GetAllProducts]);
 
-	const HandleSelectedPagination = useCallback(async(index) => {
-		
-		if(currentPage > index){
-			setCurrentPage(index + 1);		
-		}else{
-			setCurrentPage(index - 1);
-		}
-		setPagination({ ...pagination, pageNumber: index + 1 });
-		setLoading(true);
-		await GetAllProducts();
-		setLoading(false);
-		window.scrollTo(0,0)
-	},[pagination, GetAllProducts]);
+	const HandleSelectedPagination = useCallback(
+		async (index) => {
+			if (currentPage > index) {
+				setCurrentPage(index + 1);
+			} else {
+				setCurrentPage(index - 1);
+			}
+			setPagination({ ...pagination, pageNumber: index + 1 });
+			setLoading(true);
+			await GetAllProducts();
+			setLoading(false);
+			window.scrollTo(0, 0);
+		},
+		[pagination, GetAllProducts, currentPage],
+	);
 
 	useEffect(() => {
 		if (cantProduct > 0) {
@@ -106,7 +110,9 @@ export const Home = () => {
 				<Loading />
 			) : (
 				<div className={`w-full flex flex-col space-y-5`}>
-					<div className={`w-full flex flex-col justify-center p-4 space-y-1.5`}>
+					<div
+						className={`w-full flex flex-col justify-center p-4 space-y-1.5`}
+					>
 						<h1 className="text-2xl md:text-4xl font-extrabold text-center text-shadow-lg/80 text-shadow-neutral-500">
 							Tienda de Ropa Xtreme
 						</h1>
@@ -123,7 +129,7 @@ export const Home = () => {
 							))
 						) : (
 							<span
-								className={`text-semibold text-2xl text-center text-shadow-xs/30 text-shadow-black`}
+								className={`text-semibold text-2xl text-center text-shadow-lg/90 text-shadow-gray-400 underline decoration-4 underline-offset-8 decoration-purple-700`}
 							>
 								No se encontraron registros de los productos. Inténtalo más
 								tarde.

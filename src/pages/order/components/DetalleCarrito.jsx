@@ -1,3 +1,6 @@
+// Este componente permite mostrar el detalle de la venta que incluye el subtotal, el iva, el descuento 
+// y total a pagar por los articulos
+
 import { useSelector } from "react-redux";
 
 export const DetalleCarrito = () => {
@@ -33,7 +36,10 @@ export const DetalleCarrito = () => {
 			</thead>
 			<tbody>
 				{shoppingCart.map((item) => (
-					<tr key={Math.random()} className="hover:bg-green-700/50 bg-gray-500/80 font-semibold">
+					<tr
+						key={Math.random()}
+						className="hover:bg-green-700/50 bg-gray-500/80 font-semibold"
+					>
 						<td className="border p-1.5 ">
 							<img
 								className="w-30 h-24 md:h-30 mx-auto rounded-md"
@@ -65,7 +71,10 @@ export const DetalleCarrito = () => {
 					<td></td>
 					<td></td>
 					<td></td>
-					<th scope="col" className="px-2 py-2.5 border bg-gray-500/80 font-semibold">
+					<th
+						scope="col"
+						className="px-2 py-2.5 border bg-gray-500/80 font-semibold"
+					>
 						Subtotal
 					</th>
 					<td className="px-2 py-2.5 border text-right bg-gray-500/80 font-semibold">
@@ -77,7 +86,10 @@ export const DetalleCarrito = () => {
 					<td></td>
 					<td></td>
 					<td></td>
-					<th scope="col" className="px-2 py-2.5 border bg-gray-500/80 font-semibold">
+					<th
+						scope="col"
+						className="px-2 py-2.5 border bg-gray-500/80 font-semibold"
+					>
 						Descuento
 					</th>
 					<td className="px-2 py-2.5 border text-right bg-gray-500/80 font-semibold">
@@ -89,7 +101,10 @@ export const DetalleCarrito = () => {
 					<td></td>
 					<td></td>
 					<td></td>
-					<th scope="col" className="px-2 py-2.5 border bg-gray-500/80 font-semibold">
+					<th
+						scope="col"
+						className="px-2 py-2.5 border bg-gray-500/80 font-semibold"
+					>
 						Iva 15%
 					</th>
 					<td className="px-2 py-2.5 border text-right bg-gray-500/80 font-semibold">
@@ -101,7 +116,10 @@ export const DetalleCarrito = () => {
 					<td></td>
 					<td></td>
 					<td></td>
-					<th scope="col" className="px-2 py-2.5 border bg-gray-500/80 font-semibold">
+					<th
+						scope="col"
+						className="px-2 py-2.5 border bg-gray-500/80 font-semibold"
+					>
 						Total a Pagar
 					</th>
 					<td className="px-2 py-2.5 border text-right bg-gray-500/80 font-semibold">

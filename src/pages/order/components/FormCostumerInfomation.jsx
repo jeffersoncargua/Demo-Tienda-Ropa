@@ -1,3 +1,6 @@
+// Este componente permite enviar la identificacion del usuario al back-end para buscar su informacion 
+// para continuar con el proceso de compra y facturacion
+
 export const FormCostumerInfomation = ({
 	identificacionRef,
 	handleSubmit,
@@ -42,7 +45,7 @@ export const FormCostumerInfomation = ({
 				<button
 					type="submit"
 					disabled={costumer.identificacion}
-					className={`${costumer.identificacion ? "cursor-not-allowed" : "cursor-pointer"} flex flex-row justify-center items-center px-2.5 py-2 rounded-lg bg-green-600 hover:bg-green-700 hover:text-white`}
+					className={`${costumer.identificacion ? "cursor-not-allowed" : "cursor-pointer"} flex flex-row justify-center items-center px-2.5 py-2 rounded-lg bg-green-600 hover:bg-green-700 hover:text-white hover:border-2 hover:border-black font-semibold`}
 				>
 					Buscar
 					<svg

@@ -1,16 +1,18 @@
+// Esta pagina permite realizar los procesos para el pago de la orden de compra y proceder con 
+// la facturacion correspondiente
+
 import { useSelector, useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
 import { clearToCart } from "../../redux/cartSlice";
 import { useState, useRef, useEffect } from "react";
 import { BuscarUsuario } from "../../services/UserService";
 import { GenerarVenta } from "../../services/SalesService";
 import { Loading } from "../../components";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import {
 	FormCostumerInfomation,
 	FormPayment,
 	DetalleCarrito,
+	ButtonCancel,
 } from "./components";
 import {
 	SweetAlertSuccess,
@@ -18,7 +20,7 @@ import {
 	SweetAlertDelete,
 	SweetAlertSuccessDeleted,
 } from "../../components/SweetAlertResponse";
-//import { FormPay } from "./components";
+import { useForm } from "react-hook-form";
 
 export const Order = () => {
 	const shoppingCart = useSelector((state) => state.cartState.shoppingCart);
@@ -36,15 +38,10 @@ export const Order = () => {
 	const [elementFocus, setElementFocus] = useState(null);
 	const [identificacion, setIdentificacion] = useState("");
 	const identificacionRef = useRef("");
-
-	const { register, handleSubmit } = useForm({
-		defaultValues: {
-			rucEmpresa: import.meta.env.VITE_EMPRESA_RUC,
-			shoppingCart: JSON.stringify(shoppingCart),
-		},
-	});
-
 	const navigate = useNavigate();
+
+	const {handleSubmit, formState:{errors}} = useForm();
+
 	const dispatch = useDispatch();
 
 	const totalProductos = shoppingCart.reduce((suma, item) => {
@@ -58,15 +55,14 @@ export const Order = () => {
 		setShowFormPay(!showFormPay);
 	};
 
-	const HandleCancel = async() => {
-		//dispatch(clearToCart());
-		const result = await SweetAlertDelete();
-		console.log(result);
-		if(result.isConfirmed){
-			dispatch(clearToCart());
-			SweetAlertSuccessDeleted();
-		}
-	};
+	// const HandleCancel = async () => {
+	// 	const result = await SweetAlertDelete();
+	// 	if (result.isConfirmed) {
+	// 		dispatch(clearToCart());
+	// 		SweetAlertSuccessDeleted();
+	// 		navigate("/fail");
+	// 	}
+	// };
 
 	const HandlePay = async () => {
 		const ventaDto = {
@@ -82,14 +78,16 @@ export const Order = () => {
 			plazos: deferred.plazos,
 			formaPago: formPay,
 		};
+
 		setLoading(true);
-		console.log(ventaDto);
 		const response = await GenerarVenta(ventaDto);
-		console.log(response);
+
 		if (response.isSuccess) {
 			SweetAlertSuccess(response.message);
+			navigate(`/success?identificacion=${identificacion}`);
 		} else {
 			SweetAlertFail(response.message);
+			navigate('/fail');
 		}
 		setLoading(false);
 		setShowFormPay(false);
@@ -157,27 +155,28 @@ export const Order = () => {
 								HandleCostumer={HandleCostumer}
 								message={message}
 								costumer={costumer}
-							/>							
+							/>
 						</div>
 					</div>
 
 					{/*Boton para cancelar la venta */}
-					<button
+					<ButtonCancel identificacion={costumer.identificacion} tipo="identificacion" />
+					{/* <button
 						type="button"
 						onClick={() => HandleCancel()}
-						className={`${costumer.identificacion ? 'hidden' : 'flex'} px-5 py-2 mx-auto bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center`}
+						className={`${costumer.identificacion ? "hidden" : "flex"} px-5 py-2 mx-auto bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex-row justify-center items-center hover:border-2 hover:border-black`}
 					>
 						Cancelar Compra
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							className="bi bi-x-circle w-5 h-5 ms-3"
+							className="bi bi-x-circle w-5 h-5 ms-3 font-bold"
 							viewBox="0 0 16 16"
 						>
 							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
 							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
 						</svg>
-					</button>
+					</button> */}
 
 					{/* Seccion para realizar el pago con tarjeta */}
 					<div className="w-full md:w-[70%] mx-auto">
@@ -191,7 +190,7 @@ export const Order = () => {
 								setDeferred={setDeferred}
 								token={token}
 								setFormPay={setFormPay}
-								HandleCancel={HandleCancel}
+								// HandleCancel={HandleCancel}
 							/>
 						)}
 					</div>
@@ -225,7 +224,7 @@ export const Order = () => {
 					<button
 						type="button"
 						onClick={() => HandlePay()}
-						className="px-5 py-2 bg-green-400 hover:bg-green-600 rounded-lg hover:text-white flex flex-row justify-center items-center"
+						className="px-5 py-2 bg-green-400 hover:bg-green-600 rounded-lg hover:text-white flex flex-row justify-center items-center hover:border-2 hover:border-black font-semibold"
 					>
 						3. Confirmar Pago
 						<svg
@@ -243,7 +242,9 @@ export const Order = () => {
 							<path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567" />
 						</svg>
 					</button>
-					<button
+
+					<ButtonCancel />
+					{/* <button
 						type="button"
 						onClick={() => HandleCancel()}
 						className="px-5 py-2 bg-red-400 hover:bg-red-600 rounded-lg hover:text-white flex flex-row justify-center items-center"
@@ -258,7 +259,7 @@ export const Order = () => {
 							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
 							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
 						</svg>
-					</button>
+					</button> */}
 				</div>
 			</div>
 

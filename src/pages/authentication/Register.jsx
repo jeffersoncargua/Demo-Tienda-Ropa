@@ -1,3 +1,5 @@
+// Este componente permite realizar el registro de los usuarios para la venta y facturacion
+
 import { useForm } from "react-hook-form";
 import { message, patterns } from "../../utils/validation/Validation";
 import { ErrorMessageValidator } from "../../components";
@@ -18,23 +20,6 @@ export const Register = () => {
 
 	const [loading, setLoading] = useState(false);
 
-	// async function HandleFormSumbit(register) {
-	// 	let responseFromApi = await fetch(`${import.meta.env.VITE_API_URL}/Costumer/CreateCostumer`, {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			"Accept": "application/json",
-	// 		},
-	// 		body: JSON.stringify(register)
-	// 	}).then((result) => result.json());
-
-	// 	if (responseFromApi.isSuccess) {
-	// 		SweetAlertSuccess(response.message);
-	// 	} else {
-	// 		SweetAlertFail(response.message);
-	// 	}
-	// }
-
 	async function HandleFormSumbit(register) {
 		setLoading(true);
 		const response = await RegistrarUsuario(register);
@@ -47,35 +32,20 @@ export const Register = () => {
 		setLoading(false);
 	}
 
-	// const Registrar =
-	//   async(register) => {
-	// 	let response = await RegistrarUsuario(register);
-	// 	if (response.isSuccess) {
-	// 		SweetAlertSuccess(response.message);
-	// 	} else {
-	// 		SweetAlertFail(response.message);
-	// 	}
-	//   };
-
-	// const Registrar =
-	//   async(register) => {
-	// 	let response = await RegistrarUsuario(register);
-	// 	if (response.isSuccess) {
-	// 		SweetAlertSuccess(response.message);
-	// 	} else {
-	// 		SweetAlertFail(response.message);
-	// 	}
-	//   };
-
 	return (
 		<div className="w-[95%] mx-auto flex flex-col my-10 items-center">
-			<h2 className="text-xl font-bold underline underline-offset-2 text-center">
-				Registro de Usuario
-			</h2>
+			<div
+				className={`w-full flex flex-col justify-center p-4 space-y-1.5`}
+			>
+				<h1 className="text-2xl md:text-4xl font-extrabold text-center text-shadow-lg/80 text-shadow-neutral-500">
+					Registro de Usuario
+				</h1>
+				<span className="w-[30%] md:w-[15%] h-1.5 mx-auto rounded-b-2xl bg-blue-600 border"></span>
+			</div>
 
 			<form
 				onSubmit={handleSubmit(HandleFormSumbit)}
-				className="w-[90%] md:w-[80%] mx-auto text-xs md:text-sm flex flex-col justify-center space-y-5 my-10 p-4 border-2 border-ambar-500 rounded-lg shadow-xs/30 shadow-green-600"
+				className="w-[90%] md:w-[80%] mx-auto text-xs md:text-sm flex flex-col justify-center space-y-5 my-10 p-4 border-2 border-ambar-500 rounded-lg shadow-xs/30 shadow-green-600 bg-amber-400/60"
 			>
 				<div className="w-full grid grid-col-1 md:grid-cols-2 gap-y-4 md:gap-14 ">
 					{/*Nombre completo */}

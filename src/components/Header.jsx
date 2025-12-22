@@ -1,3 +1,5 @@
+// Este componente es el header del sitio web que contiene la barra de navegacion 
+
 import { useState } from "react";
 import LogoChompa from "../assets/LogoChompra.png";
 import { Link } from "react-router";
@@ -59,7 +61,7 @@ export const Header = () => {
 						</Link>
 						<Link
 							to="cart"
-							className={`relative h-10 w-10 rounded-full  bg-amber-50 hidden md:flex md:items-center md:justify-center hover:cursor-pointer group ${shoppingCart.length > 0 ? 'hover:bg-green-400':'hover:bg-red-400'}`}
+							className={`relative h-10 w-10 rounded-full  bg-amber-50 hidden md:flex md:items-center md:justify-center hover:cursor-pointer group ${shoppingCart.length > 0 ? "hover:bg-green-400" : "hover:bg-red-400"}`}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +91,9 @@ export const Header = () => {
 								<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
 							</svg>
 							Carrito
-							<span className={`w-5 h-5 ms-2 ${shoppingCart.length > 0 ?'bg-green-500':'bg-red-400'} rounded-full font-bold flex items-center justify-center text-xs`}>
+							<span
+								className={`w-5 h-5 ms-2 ${shoppingCart.length > 0 ? "bg-green-500" : "bg-red-400"} rounded-full font-bold flex items-center justify-center text-xs`}
+							>
 								{shoppingCart.length}
 							</span>
 						</Link>

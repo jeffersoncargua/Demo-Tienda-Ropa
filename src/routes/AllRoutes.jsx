@@ -7,6 +7,9 @@ import {
 	ProductDetail,
 	Payment,
 	EmptyCart,
+	PageNotFound,
+	PaymentFail,
+	PaymentSuccess,
 } from "../pages";
 import { useSelector } from "react-redux";
 
@@ -20,7 +23,10 @@ export const AllRoutes = () => {
 			<Route path="cart" element={cartIsEmpty ? <Cart /> : <EmptyCart />} />
 			<Route path="order" element={cartIsEmpty ? <Order /> : <EmptyCart />} />
 			<Route path="register" element={<Register />} />
+			<Route path="success" element={<PaymentSuccess />} />
+			<Route path="fail" element={<PaymentFail />} />
 			<Route path="productDetail/:id/:talla" element={<ProductDetail />} />
+			<Route path="*" element={<PageNotFound />} />
 			<Route path="payment" element={<Payment />} />
 		</Routes>
 	);
