@@ -37,9 +37,7 @@ export const Order = () => {
 	const identificacionRef = useRef("");
 	const navigate = useNavigate();
 
-	const {
-		handleSubmit,
-	} = useForm();
+	const { handleSubmit } = useForm();
 
 	const totalProductos = shoppingCart.reduce((suma, item) => {
 		return suma + item.cantidad;

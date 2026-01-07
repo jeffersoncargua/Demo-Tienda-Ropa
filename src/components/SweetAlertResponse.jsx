@@ -2,31 +2,31 @@
 
 import Swal from "sweetalert2";
 
-const SweetAlertSuccess = (title = "Se realizo la operacion con exito") => {
+const SweetAlertSuccess = (title = "Se realizó la operacion con éxito") => {
 	Swal.fire({
 		position: "center",
 		icon: "success",
 		title: title,
 		showConfirmButton: false,
-		timer: 1500,
+		timer: 3500,
 	});
 };
 
-const SweetAlertFail = (text = "Ha ocurrido un error en la operacion") => {
+const SweetAlertFail = (text = "Ha ocurrido un error en la operación") => {
 	Swal.fire({
 		icon: "error",
 		title: "Oops...",
 		text: text,
 		showCancelButton: false,
 		showConfirmButton: false,
-		timer: 1500,
+		timer: 3500,
 	});
 };
 
 const SweetAlertDelete = async () => {
 	const response = await Swal.fire({
 		title: "Estás seguro de cancelar la venta?",
-		text: "Se eliminará los articulos de tu carrito de compras",
+		text: "Se eliminará los artículos de tu carrito de compras",
 		icon: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#3085d6",
