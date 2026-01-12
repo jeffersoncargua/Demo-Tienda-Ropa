@@ -14,6 +14,7 @@ export async function useFetch({
 		"Content-Type": "application/json",
 		Accept: "application/json",
 		Authentication: `Bearer ${token}`,
+		"Access-Control-Allow-Origin": `${url}`,
 	};
 
 	// const errorRequest = {
@@ -24,7 +25,7 @@ export async function useFetch({
 
 	switch (verbose) {
 		case "GET":
-			await fetch(`${url}/${route + query}`, {
+			await fetch(`${url}/api/${route + query}`, {
 				method: verbose,
 				headers: headers,
 			})
@@ -40,7 +41,7 @@ export async function useFetch({
 			break;
 
 		default:
-			await fetch(`${url}/${route + query}`, {
+			await fetch(`${url}/api/${route + query}`, {
 				method: verbose,
 				headers: headers,
 				body: JSON.stringify(object),
