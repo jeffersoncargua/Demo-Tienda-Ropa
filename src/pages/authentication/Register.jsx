@@ -10,6 +10,7 @@ import {
 import { RegistrarUsuario } from "../../services/UserService";
 import { useState } from "react";
 import { Loading } from "../../components";
+import { useNavigate } from "react-router";
 
 export const Register = () => {
 	const {
@@ -19,6 +20,7 @@ export const Register = () => {
 	} = useForm();
 
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	async function HandleFormSumbit(register) {
 		setLoading(true);
@@ -26,6 +28,7 @@ export const Register = () => {
 		console.log(response);
 		if (response.isSuccess) {
 			SweetAlertSuccess(response.message);
+			navigate("/");
 		} else {
 			SweetAlertFail(response.message);
 		}

@@ -17,14 +17,14 @@ const message = {
 		identificacion:
 			"La identificacion debe contener 10 o 13 digitos segun lo requiera el cliente",
 		telefono: "El numero debe tener 10 digitos",
-		direccion: "Debe ingresar una direccion válida",
+		direccion: "Debe ingresar una direccion válida. Limite de 50 caracteres",
 		email: "Debe ingresar correo electrónico válido",
 	},
 };
 
 const patterns = {
 	patternLetter: /^([a-zA-ZñÑáéíóúüÁÉÍÓÚÜ\s]{2,20})$/,
-	patternAlfanumber: /^[a-zA-Z0-9\W_]{1,20}$/,
+	patternAlfanumber: /^[a-zA-Z0-9\W_]{1,50}$/,
 	patternEmail: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 	patternNumber: /^\d{10,13}$/,
 	patternPhone: /^\d{10}$/,
