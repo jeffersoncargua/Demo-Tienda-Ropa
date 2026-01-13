@@ -123,7 +123,7 @@ export const ProductDetail = () => {
 			{loading ? (
 				<Loading />
 			) : producto.codigoPrincipal ? (
-				<div className="w-[60%] mx-auto flex flex-col md:flex-row flex-wrap p-6 border rounded-md bg-amber-50 border-gray-900 shadow-lg/80 shadow-black">
+				<div className="w-[85%] md:w-[60%] mx-auto flex flex-col md:flex-row flex-wrap p-6 border rounded-md bg-amber-50 border-gray-900 shadow-lg/80 shadow-black">
 					{/* Es para la imagen */}
 					<section className="w-full md:w-1/2 flex items-center">
 						<div className="w-[80%] mx-auto overflow-hidden rounded-md hover:delay-200 group hover:border">
@@ -143,6 +143,7 @@ export const ProductDetail = () => {
 						<div>
 							<b>Elige la talla: </b>
 							<select
+								translate="no"
 								name="talla"
 								id="talla"
 								ref={tallaRef}
