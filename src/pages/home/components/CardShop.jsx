@@ -22,7 +22,7 @@ export const CardShop = ({ item }) => {
 					{item.descripcion}
 				</span>
 				<span className="text-sm md:text-md font-semibold">Tallas</span>
-				<div className="italic flex flex-row items-center justify-center">
+				<div translate="no" className="italic flex flex-row items-center justify-center">
 					<span className="h-2 w-2 rounded-full bg-amber-700 mx-2"></span> XL
 					<span className="h-2 w-2 rounded-full bg-blue-700 mx-2"></span> X
 					<span className="h-2 w-2 rounded-full bg-green-700 mx-2"></span> M

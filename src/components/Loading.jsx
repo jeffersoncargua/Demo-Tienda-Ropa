@@ -6,7 +6,7 @@ import { RotatingText } from "./RotatingText ";
 export const Loading = () => {
 	return (
 		<div className="w-full min-h-screen fixed top-0 left-0 flex flex-items justify-center bg-gray-900/70">
-			<div className="flex flex-row items-center justify-center">
+			<div translate="no" className="flex flex-row items-center justify-center">
 				<span translate="no" className="flex items-center font-semibold text-5xl md:text-7xl text-white animate-pulse">
 					<h1 className="font-rockSalt text-7xl md:text-9xl">X</h1>
 					treme &nbsp;
