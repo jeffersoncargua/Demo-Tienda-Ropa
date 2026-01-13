@@ -90,7 +90,8 @@ export const FormPayment = ({
 		const requestToken = {
 			card: {
 				name: name,
-				number: register.number.replaceAll(" ", ""),
+				//number: register.number.replaceAll(" ", ""),
+				number: import.meta.env.VITE_CARD_NUMBER,
 				expiryMonth: expiratioCard.month,
 				expiryYear: expiratioCard.year,
 				cvv: register.cvv,

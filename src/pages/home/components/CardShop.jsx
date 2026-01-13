@@ -31,7 +31,7 @@ export const CardShop = ({ item }) => {
 				<button
 					type="button"
 					onClick={() => navigate(`productDetail/${item.id}/${null}`)}
-					className="z-30 flex justify-center px-1.5 py-2 bg-blue-700 hover:transition hover:delay-100 hover:duration-200 hover:ease-in-out hover:bg-linear-65 from-blue-500 to-amber-700 group hover:text-white rounded-lg hover:cursor-pointer"
+					className="z-30 flex items-center justify-center px-1.5 py-2 bg-blue-700 hover:transition hover:delay-100 hover:duration-200 hover:ease-in-out hover:bg-linear-65 from-blue-500 to-amber-700 group hover:text-white rounded-lg hover:cursor-pointer"
 				>
 					Ver detalles
 					<svg
