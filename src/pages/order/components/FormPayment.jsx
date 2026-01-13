@@ -10,9 +10,10 @@ import { ErrorMessageValidator } from "../../../components";
 import { CreateTokenPay } from "../../../services/SalesService";
 import LogoMastercard from "../../../assets/mastercard.png";
 import LogoVisa from "../../../assets/visa.png";
-import { message } from "../../../utils/validation/Validation";
+import { message, patterns } from "../../../utils/validation/Validation";
 import { SweetAlertFail } from "../../../components/SweetAlertResponse";
 import { ButtonCancel } from "./ButtonCancel";
+import { pattern } from "motion/react-client";
 
 export const FormPayment = ({
 	name,
@@ -280,7 +281,7 @@ export const FormPayment = ({
 						alt="Logo Mastercard"
 					/>
 					<input
-						{...register("number", { required: message.required.number })}
+						{...register("number", { required: message.required.number, pattern: {value: patterns.patternCardNumber, message: message.error.number}})}
 						type="text"
 						name="number"
 						className="w-[calc(100%-7.5rem)] bg-amber-50 absolute inset-y-0 left-0 ml-30 pl-4 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-blue-700"
@@ -331,7 +332,7 @@ export const FormPayment = ({
 							>
 								CVV:
 								<input
-									{...register("cvv", { required: message.required.cvv })}
+									{...register("cvv", { required: message.required.cvv, pattern: {value: patterns.patternCVV, message: message.error.cvv}})}
 									type="text"
 									name="cvv"
 									className="w-[calc(100%-3rem)] bg-amber-50 absolute inset-y-0 left-0 ml-12 pl-4 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-blue-700"

@@ -19,6 +19,8 @@ const message = {
 		telefono: "El numero debe tener 10 digitos",
 		direccion: "Debe ingresar una direccion válida. Limite de 50 caracteres",
 		email: "Debe ingresar correo electrónico válido",
+		number: "El numero de la tarjeta debe contener 16 digitos",
+		cvv: "El CVV debe contener 3 digitos",
 	},
 };
 
@@ -28,6 +30,8 @@ const patterns = {
 	patternEmail: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 	patternNumber: /^\d{10,13}$/,
 	patternPhone: /^\d{10}$/,
+	patternCardNumber: /^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/,
+	patternCVV: /^\d{3}$/,
 };
 
 export { message, patterns };
